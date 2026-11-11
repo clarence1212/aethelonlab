@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aethelon Research</title>
+<meta name="description" content="Research notes by Dr. Elias Kairos Chen on the evidence behind Aethelon: tutoring, early language, embodied companions and privacy by architecture.">
+<meta property="og:title" content="Aethelon Research">
+<meta property="og:description" content="Research notes by Dr. Elias Kairos Chen on the evidence behind Aethelon.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aethelonlab.com/research.html">
+<link rel="canonical" href="https://aethelonlab.com/research.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080A'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23C6A87C' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%237DD3FC'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: dark index of notes above, alabaster reading column below; same tokens as the home page. */
+  --obsidian:#07080A;
+  --alabaster:#F5F4F0;
+  --gold:#C6A87C;
+  --gold-ink:#8a6f43;
+  --ice:#7DD3FC;
+  --mute:rgba(245,244,240,.64);
+  --faint:rgba(245,244,240,.38);
+  --line:rgba(245,244,240,.12);
+  --serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Hanken Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wrap:1180px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--obsidian);color:var(--alabaster);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ice);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;text-wrap:balance;letter-spacing:-.01em}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:block}
+.btn{display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;font-size:.78rem;font-weight:500;letter-spacing:.04em;text-decoration:none;white-space:nowrap;background:var(--gold);color:var(--obsidian);transition:background .3s}
+.btn:hover{background:#d6bb93}
+.nav{position:fixed;top:14px;left:0;right:0;z-index:50;padding:0 16px}
+.nav-in{max-width:var(--wrap);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 12px 10px 22px;border-radius:999px;background:rgba(7,8,10,.72);border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand b{font-family:var(--serif);font-weight:500;font-size:1.15rem;letter-spacing:.34em}
+.badge{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--ice);border:1px solid rgba(125,211,252,.28);padding:3px 8px;border-radius:999px}
+.links{display:flex;gap:26px;list-style:none}
+.links a{font-size:.8rem;color:var(--mute);text-decoration:none;letter-spacing:.03em;transition:color .25s}
+.links a:hover,.links a[aria-current]{color:var(--alabaster)}
+@media(max-width:900px){.links{display:none}}
+@media(max-width:520px){.badge{display:none}.brand b{font-size:1rem;letter-spacing:.26em}}
+
+.head{padding:170px 0 80px}
+.head h1{font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.04;max-width:16ch}
+.head p{color:var(--mute);max-width:60ch;margin-top:26px;font-size:1.08rem}
+.index{list-style:none;margin-top:64px;border-top:1px solid var(--line)}
+.index a{display:grid;grid-template-columns:70px 1fr auto;gap:24px;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .3s}
+.index a:hover{padding-left:10px}
+.index .n{font-family:var(--mono);font-size:.72rem;color:var(--gold);letter-spacing:.14em}
+.index h2{font-size:1.7rem;line-height:1.2}
+.index p{color:var(--mute);font-size:.95rem;margin-top:4px;max-width:62ch}
+.index .t{font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.1em;white-space:nowrap}
+@media(max-width:700px){.index a{grid-template-columns:1fr}.index .t{display:none}}
+
+.papers{background:var(--alabaster);color:var(--obsidian)}
+article{max-width:760px;margin:0 auto;padding:100px 28px}
+article+article{border-top:1px solid rgba(7,8,10,.14)}
+article .eyebrow{color:var(--gold-ink)}
+article h2{font-size:clamp(2rem,4.4vw,3.1rem);line-height:1.1;margin-bottom:18px}
+.by{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:rgba(7,8,10,.6);margin-bottom:40px}
+article p{font-family:var(--serif);font-size:1.36rem;line-height:1.52;margin-bottom:1.1em;color:rgba(7,8,10,.88)}
+article h3{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;margin:44px 0 16px;color:rgba(7,8,10,.7)}
+.refs{list-style:none;margin-top:44px;padding-top:24px;border-top:1px solid rgba(7,8,10,.14);display:grid;gap:12px}
+.refs li{font-size:.86rem;font-weight:400;line-height:1.5;color:rgba(7,8,10,.72);padding-left:22px;text-indent:-22px}
+.refs a{color:var(--gold-ink);text-underline-offset:3px;word-break:break-word}
+.top{display:inline-block;margin-top:36px;font-family:var(--mono);font-size:.74rem;color:rgba(7,8,10,.6)}
+@media(max-width:700px){article{padding:70px 22px}article p{font-size:1.2rem}}
+
+footer{border-top:1px solid var(--line);padding:34px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--faint)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="Aethelon home"><b>AETHELON</b><span class="badge">aethelonlab.com</span></a>
+    <ul class="links">
+      <li><a href="index.html#manifesto">Manifesto</a></li>
+      <li><a href="index.html#capsule">The Capsule</a></li>
+      <li><a href="index.html#arc">18-Year Arc</a></li>
+      <li><a href="index.html#architecture">Architecture</a></li>
+      <li><a href="index.html#vault">Sovereign Vault</a></li>
+      <li><a href="research.html" aria-current="page">Research</a></li>
+    </ul>
+    <a class="btn" href="index.html#briefing">Request Private Briefing</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="head">
+  <div class="wrap">
+    <span class="eyebrow">Aethelon Research</span>
+    <h1>The evidence we are building on</h1>
+    <p>Research notes by Dr. Elias Kairos Chen, Founder &amp; Chief Architect. Each one takes a published finding, states what it does and does not show, and explains the design decision Aethelon draws from it. Aethelon is at concept stage, so these are arguments from the literature and not results of our own.</p>
+
+    <ul class="index">
+      <li><a href="#two-sigma"><span class="n">NOTE 01</span><div><h2>The Two Sigma Problem, Forty Years On</h2><p>What one-to-one tutoring is worth, and what recent AI tutoring trials add.</p></div><span class="t">4 MIN</span></a></li>
+      <li><a href="#conversation"><span class="n">NOTE 02</span><div><h2>Conversation Before Content</h2><p>Why the earliest years call for a system that listens and takes turns.</p></div><span class="t">4 MIN</span></a></li>
+      <li><a href="#embodiment"><span class="n">NOTE 03</span><div><h2>Why the Companion Needs a Body</h2><p>What a decade of social robotics says about physical presence in learning.</p></div><span class="t">4 MIN</span></a></li>
+      <li><a href="#privacy"><span class="n">NOTE 04</span><div><h2>Privacy by Architecture</h2><p>How to sense a child's attention without building a surveillance system.</p></div><span class="t">4 MIN</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<div class="papers">
+
+<article id="two-sigma">
+  <span class="eyebrow">Research note 01</span>
+  <h2>The Two Sigma Problem, Forty Years On</h2>
+  <div class="by">DR. ELIAS KAIROS CHEN · NOVEMBER 2026</div>
+  <p>In 1984 Benjamin Bloom reported a result that education has been trying to live up to ever since. Students taught one-to-one, with mastery learning, finished about two standard deviations ahead of students taught in a conventional class. Put plainly, the average tutored student outperformed roughly 98 percent of the classroom group.</p>
+  <p>Bloom did not call this a triumph. He called it a problem, because no society could afford a personal tutor for every child. His challenge to the field was to find something that worked as well and could be delivered to everyone.</p>
+  <h3>What has changed</h3>
+  <p>For four decades the answer was partial. Then generative AI made patient, conversational tutoring cheap. In 2025 a Harvard team published a randomised controlled trial with 194 undergraduates in an introductory physics course. Students who worked with a purpose-built AI tutor learned more than twice as much as those in an active-learning class taught by experienced instructors, and they did it in less time.</p>
+  <p>The limits matter as much as the headline. These were university students, in one subject, over two weeks. The tutor was designed by the instructors around the course, and it was built to make students reason instead of handing over answers. A general chatbot dropped into a classroom is a different thing.</p>
+  <h3>What Aethelon takes from it</h3>
+  <p>Two things. First, design is the variable. A tutor that withholds the answer and asks the next question is what produces the gain, which is why our engine is built to coach before it explains.</p>
+  <p>Second, every trial so far is short. Nobody has tested what happens when a tutor knows a learner for years: which ideas were fragile at seven, what finally made fractions make sense, how this particular mind likes to be challenged. That continuity is what a human tutor of many years has, and it is the hypothesis behind the Accumulative Cognitive Ledger. I have argued elsewhere that intelligence is becoming a basic utility. If that is right, Bloom's problem stops being about cost and becomes a question of memory.</p>
+  <ul class="refs">
+    <li>Bloom, B. S. (1984). The 2 Sigma Problem: The Search for Methods of Group Instruction as Effective as One-to-One Tutoring. <i>Educational Researcher</i>, 13(6), 4–16. <a href="https://doi.org/10.3102/0013189X013006004" target="_blank" rel="noopener">doi.org/10.3102/0013189X013006004</a></li>
+    <li>Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning. <i>Scientific Reports</i>, 15, 17458. <a href="https://doi.org/10.1038/s41598-025-97652-6" target="_blank" rel="noopener">doi.org/10.1038/s41598-025-97652-6</a></li>
+  </ul>
+  <a class="top" href="#top">↑ All notes</a>
+</article>
+
+<article id="conversation">
+  <span class="eyebrow">Research note 02</span>
+  <h2>Conversation Before Content</h2>
+  <div class="by">DR. ELIAS KAIROS CHEN · NOVEMBER 2026</div>
+  <p>The easiest mistake in building technology for very young children is to assume they need more input: more words, more pictures, more lessons. The developmental evidence points somewhere else.</p>
+  <h3>Turns, not volume</h3>
+  <p>In 2018 researchers at MIT and Harvard recorded the home language of 36 children aged four to six and scanned their brains while they listened to stories. The number of words a child heard explained little. What tracked with stronger language scores, and with greater activity in a core language region of the brain, was the number of back-and-forth exchanges the child had with an adult. That held regardless of family income.</p>
+  <p>It is one study with a small sample, and it shows association, not proof of cause. But it agrees with a long line of developmental work: language grows in exchange, when someone responds to what the child just did.</p>
+  <h3>Screens are the wrong starting point</h3>
+  <p>The World Health Organization's 2019 guidance for children under five is direct. Sedentary screen time is not recommended for one-year-olds, and for ages two to four it should be no more than an hour a day, with less being better. Reading and storytelling with a caregiver are encouraged instead.</p>
+  <h3>What Aethelon takes from it</h3>
+  <p>In the first stage of the arc, the system's job is to listen and to take turns. It speaks through a companion in the room, not through a display. It waits, responds to what the child said, and leaves space for the reply.</p>
+  <p>The second decision matters more. A machine that takes all of a child's conversational turns would be replacing the very thing the research says matters. So the early-years system is designed to raise the amount of conversation between child and parent: noticing what the child is curious about and passing it on to the adults, so that dinner has more to talk about. Success at this age is a household that talks more.</p>
+  <ul class="refs">
+    <li>Romeo, R. R., Leonard, J. A., Robinson, S. T., West, M. R., Mackey, A. P., Rowe, M. L., &amp; Gabrieli, J. D. E. (2018). Beyond the 30-Million-Word Gap: Children's Conversational Exposure Is Associated With Language-Related Brain Function. <i>Psychological Science</i>, 29(5), 700–710. <a href="https://doi.org/10.1177/0956797617742725" target="_blank" rel="noopener">doi.org/10.1177/0956797617742725</a></li>
+    <li>World Health Organization (2019). To grow up healthy, children need to sit less and play more. News release, 24 April 2019. <a href="https://www.who.int/news/item/24-04-2019-to-grow-up-healthy-children-need-to-sit-less-and-play-more" target="_blank" rel="noopener">who.int</a></li>
+  </ul>
+  <a class="top" href="#top">↑ All notes</a>
+</article>
+
+<article id="embodiment">
+  <span class="eyebrow">Research note 03</span>
+  <h2>Why the Companion Needs a Body</h2>
+  <div class="by">DR. ELIAS KAIROS CHEN · NOVEMBER 2026</div>
+  <p>If a child can learn from a voice, why put that voice in a robot? It is a fair question, and an expensive one to get wrong. The answer from the research is that presence changes how people learn.</p>
+  <h3>What the reviews found</h3>
+  <p>In 2018 a group led by Tony Belpaeme reviewed the published work on social robots in education for <i>Science Robotics</i>. Their conclusion was that robots acting as tutors or peer learners improved both what learners knew and how they felt about learning, and on narrow tasks came close to human tutoring. They attributed this largely to the robot being physically there, which screen-based tools are not.</p>
+  <p>The same review was honest about the limits. The gains were shown on restricted topics. Speech recognition could not yet reliably understand young children. Some children leaned on the robot's help too readily. Parents and teachers were more cautious than the learners were, and the authors asked how much of a child's education should be handed to machines at all.</p>
+  <h3>What has changed since</h3>
+  <p>Two of those limits were technical, and both have moved. Speech models now cope far better with children's voices, and general-purpose humanoid hardware is moving from laboratories into production. The body is arriving. What it lacks is a mind suited to raising a child.</p>
+  <h3>What Aethelon takes from it</h3>
+  <p>We treat embodiment as part of the learning environment and build the cognitive stack to run on partner hardware. That is a deliberate division of labour: others are better placed to build actuators, and nobody has yet built eighteen years of memory.</p>
+  <p>We also take the review's cautions as design requirements. The companion is built to hold back help until the learner has tried. And the question the authors raised about delegation is answered in the architecture: parents and educators set the limits, see what is taught, and can pause the system. A companion earns its place in a home by making the adults in it more effective.</p>
+  <ul class="refs">
+    <li>Belpaeme, T., Kennedy, J., Ramachandran, A., Scassellati, B., &amp; Tanaka, F. (2018). Social robots for education: A review. <i>Science Robotics</i>, 3(21), eaat5954. <a href="https://doi.org/10.1126/scirobotics.aat5954" target="_blank" rel="noopener">doi.org/10.1126/scirobotics.aat5954</a></li>
+  </ul>
+  <a class="top" href="#top">↑ All notes</a>
+</article>
+
+<article id="privacy">
+  <span class="eyebrow">Research note 04</span>
+  <h2>Privacy by Architecture</h2>
+  <div class="by">DR. ELIAS KAIROS CHEN · NOVEMBER 2026</div>
+  <p>A system that accompanies a child for eighteen years will hold the most sensitive record that child ever has. The honest position is that a promise is not enough. Privacy has to be a property of how the system is built.</p>
+  <h3>Where the law has drawn a line</h3>
+  <p>The European Union's AI Act is the clearest signal so far. Article 5(1)(f) prohibits AI systems that infer a person's emotions in workplaces and educational institutions, with exceptions for medical and safety purposes. The reasoning is the imbalance of power: a student cannot meaningfully refuse. Outside those settings, emotion recognition is not banned but is treated as high-risk.</p>
+  <p>A family home is not an educational institution, so the prohibition does not apply directly to a system a family chooses for itself. But our second phase is academies, and the principle behind the rule is sound wherever it applies. A child's inner states should not become a data product. This note is my reading as a technologist and is not legal advice.</p>
+  <h3>Four decisions that follow</h3>
+  <p>First, sensing serves the moment and is then discarded. The companion needs to know whether a child is looking at it or has drifted away, in the same way a good teacher does. That signal is read on the device in the room, used to adjust the lesson, and not kept as footage.</p>
+  <p>Second, raw audio and video do not leave the home. Only what has been filtered into learning evidence, such as a concept mastered or a misconception noticed, goes to the ledger.</p>
+  <p>Third, the family holds the encryption keys to the ledger and the vault. The design goal is that Aethelon cannot read either, and that the family can delete them.</p>
+  <p>Fourth, the record has an owner in waiting. At adulthood it passes to the person it describes.</p>
+  <p>None of this is proven until it is built and independently examined, and we intend to invite that examination. I would rather a founding family ask us the hardest questions now than discover the answers later.</p>
+  <ul class="refs">
+    <li>Regulation (EU) 2024/1689 of the European Parliament and of the Council (Artificial Intelligence Act), Article 5(1)(f). <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">eur-lex.europa.eu/eli/reg/2024/1689/oj</a></li>
+    <li>Future of Privacy Forum. Red Lines under the EU AI Act: Unpacking the prohibition of emotion recognition in the workplace and education institutions. <a href="https://fpf.org/blog/red-lines-under-eu-ai-act-unpacking-the-prohibition-of-emotion-recognition-in-the-workplace-and-education-institutions/" target="_blank" rel="noopener">fpf.org</a></li>
+  </ul>
+  <a class="top" href="#top">↑ All notes</a>
+</article>
+
+</div>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Aethelon</span><span>aethelonlab.com</span><span>Private Briefing Only</span></div></footer>
+</body>
+</html>

@@ -66,7 +66,7 @@ h3{font-size:1.7rem;line-height:1.2}
 .links a{font-size:.8rem;color:var(--mute);text-decoration:none;letter-spacing:.03em;transition:color .25s}
 .links a:hover{color:var(--alabaster)}
 .nav .btn{padding:10px 18px;font-size:.78rem;white-space:nowrap}
-@media(max-width:1080px){.links{display:none}}
+.links{gap:22px}@media(max-width:1200px){.links{display:none}}
 @media(max-width:520px){.badge{display:none}.brand b{font-size:1rem;letter-spacing:.26em}}
 
 /* Hero */
@@ -260,6 +260,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
       <li><a href="#architecture">Architecture</a></li>
       <li><a href="#vault">Sovereign Vault</a></li>
       <li><a href="#principles">Principles</a></li>
+      <li><a href="research.html">Research</a></li>
     </ul>
     <button class="btn btn-gold" data-brief>Request Private Briefing</button>
   </div>
@@ -509,7 +510,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
     <div class="closing">
       <h2>We invite you to build it with us.</h2>
       <div>
-        <p class="lede" style="margin:0 0 22px">For family offices, co-development partners and investors.</p>
+        <p class="lede" style="margin:0 0 22px">For family offices, co-development partners and investors. <a href="research.html">Read the research notes</a>.</p>
         <button class="btn btn-gold" data-brief>Request Private Briefing</button>
       </div>
     </div>
@@ -517,7 +518,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Aethelon</span><span>aethelonlab.com</span><span>Private Briefing Only</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Aethelon</span><span>aethelonlab.com · <a href="research.html">Research</a></span><span>Private Briefing Only</span></div></footer>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
   <div class="dialog">
@@ -721,6 +722,7 @@ function $$(s, r){ return Array.prototype.slice.call((r || document).querySelect
     form.hidden = true; done.hidden = false; form.reset();
   }
   $$('[data-brief]').forEach(function(b){ b.addEventListener('click', open); });
+  if (location.hash === '#briefing') open();
   $('#mClose').addEventListener('click', close);
   m.addEventListener('click', function(e){ if (e.target === m) close(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && m.classList.contains('open')) close(); });
