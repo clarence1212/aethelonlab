@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aethelon</title>
+<meta name="description" content="Aethelon is designing an accumulative, multimodal inference stack that accompanies a human mind from its first spoken syllable to generational stewardship.">
+<meta property="og:title" content="Aethelon · Nurturing Has Changed Forever">
+<meta property="og:description" content="An accumulative, multimodal inference architecture designed to accompany a human mind from its first spoken syllable to generational stewardship.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aethelonlab.com/">
+<link rel="canonical" href="https://aethelonlab.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080A'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23C6A87C' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%237DD3FC'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: dark, wide-margin editorial column; one alabaster interruption for the founder's letter; mono reserved for specs. */
+  --obsidian:#07080A;
+  --obsidian-2:#0D0F13;
+  --alabaster:#F5F4F0;
+  --gold:#C6A87C;
+  --ice:#7DD3FC;
+  --mute:rgba(245,244,240,.64);
+  --faint:rgba(245,244,240,.38);
+  --line:rgba(245,244,240,.12);
+  --glass:rgba(245,244,240,.035);
+  --serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Hanken Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wrap:1180px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--obsidian);color:var(--alabaster);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--ice);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+section{padding:120px 0;position:relative}
+h1,h2,h3{font-family:var(--serif);font-weight:400;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1.08;max-width:18ch}
+h3{font-size:1.7rem;line-height:1.2}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:block}
+.lede{color:var(--mute);max-width:60ch;margin-top:22px;font-size:1.08rem}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;font-size:.86rem;font-weight:500;letter-spacing:.04em;text-decoration:none;transition:background .3s,color .3s,border-color .3s,transform .3s}
+.btn-gold{background:var(--gold);color:var(--obsidian)}
+.btn-gold:hover{background:#d6bb93;transform:translateY(-1px)}
+.btn-ghost{border:1px solid var(--line);color:var(--alabaster)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.note{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--faint)}
+
+/* Nav */
+.nav{position:fixed;top:14px;left:0;right:0;z-index:50;padding:0 16px}
+.nav-in{max-width:var(--wrap);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 12px 10px 22px;border-radius:999px;background:rgba(7,8,10,.62);border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand b{font-family:var(--serif);font-weight:500;font-size:1.15rem;letter-spacing:.34em}
+.badge{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--ice);border:1px solid rgba(125,211,252,.28);padding:3px 8px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+.badge i{width:5px;height:5px;border-radius:50%;background:var(--ice);animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+.links{display:flex;gap:26px;list-style:none}
+.links a{font-size:.8rem;color:var(--mute);text-decoration:none;letter-spacing:.03em;transition:color .25s}
+.links a:hover{color:var(--alabaster)}
+.nav .btn{padding:10px 18px;font-size:.78rem;white-space:nowrap}
+@media(max-width:1080px){.links{display:none}}
+@media(max-width:520px){.badge{display:none}.brand b{font-size:1rem;letter-spacing:.26em}}
+
+/* Hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:150px 0 90px;overflow:hidden}
+#sphere{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;width:100%}
+.hero h1{font-size:clamp(2.9rem,7.6vw,6.4rem);line-height:1;max-width:11ch}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{max-width:46ch;color:var(--mute);font-size:1.14rem;margin:30px 0 40px}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero .note{margin-top:54px;display:block}
+
+/* Manifesto */
+.manifesto{background:var(--alabaster);color:var(--obsidian)}
+.manifesto .eyebrow{color:#8a6f43}
+.m-grid{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:80px;align-items:start}
+.founder{position:sticky;top:110px;border:1px solid rgba(7,8,10,.14);border-radius:18px;padding:30px;background:rgba(255,255,255,.5)}
+.founder svg{width:100%;height:auto;display:block;margin-bottom:22px}
+.sig path{fill:none;stroke:#07080A;stroke-width:1.2;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:900;animation:draw 5s ease forwards}
+.sig circle{fill:#8a6f43;animation:pulse 4s ease-in-out infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+.founder h3{font-size:1.5rem}
+.founder .role{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(7,8,10,.6);margin:8px 0 20px}
+.founder p{font-size:.92rem;color:rgba(7,8,10,.72);font-weight:400}
+.founder a{display:inline-block;margin-top:18px;font-family:var(--mono);font-size:.76rem;color:#07080A;text-underline-offset:4px}
+.letter h2{max-width:20ch;margin-bottom:38px}
+.letter p{font-family:var(--serif);font-size:1.42rem;line-height:1.5;max-width:62ch;margin-bottom:1.15em;color:rgba(7,8,10,.86)}
+.letter p:first-of-type::first-letter{font-size:3.6em;float:left;line-height:.82;padding:6px 10px 0 0;color:#8a6f43}
+.letter .close{font-style:italic}
+@media(max-width:900px){.m-grid{grid-template-columns:1fr;gap:44px}.founder{position:static}.letter p{font-size:1.24rem}}
+
+/* Capsule */
+.cap-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;margin-top:60px;align-items:stretch}
+.schem{padding:22px}
+.schem svg{width:100%;height:auto;display:block}
+.schem text{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--faint)}
+.schem .frame{fill:none;stroke:rgba(245,244,240,.22);stroke-width:1}
+.schem .edge *,.schem .cloud *{transition:stroke .5s,fill .5s,opacity .5s}
+.schem .e-s{stroke:rgba(245,244,240,.25);fill:none;stroke-width:1.2}
+.schem .c-s{stroke:rgba(245,244,240,.25);fill:none;stroke-width:1.2}
+.schem .c-d{fill:rgba(245,244,240,.25)}
+[data-state="edge"] .e-s{stroke:var(--ice)}
+[data-state="edge"] .edge text{fill:var(--ice)}
+[data-state="edge"] .e-f{fill:rgba(125,211,252,.1)}
+[data-state="cloud"] .c-s{stroke:var(--gold)}
+[data-state="cloud"] .c-d{fill:var(--gold)}
+[data-state="cloud"] .cloud text{fill:var(--gold)}
+.flow{stroke-dasharray:4 7;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-22}}
+.e-f{fill:transparent}
+.cap-side{display:flex;flex-direction:column;gap:18px}
+.toggle{display:grid;grid-template-columns:1fr 1fr;padding:5px;border-radius:999px;border:1px solid var(--line);background:var(--glass)}
+.toggle button{padding:11px 10px;border-radius:999px;font-size:.78rem;letter-spacing:.03em;color:var(--mute);transition:background .35s,color .35s}
+.toggle button[aria-pressed="true"]{background:var(--alabaster);color:var(--obsidian);font-weight:500}
+.state{padding:28px;flex:1}
+.state .mono{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+[data-state="edge"] .state .mono{color:var(--ice)}
+[data-state="cloud"] .state .mono{color:var(--gold)}
+.state h3{margin:10px 0 18px}
+.state ul{list-style:none;display:grid;gap:12px}
+.state li{padding-left:20px;position:relative;color:var(--mute);font-size:.96rem}
+.state li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:1px;background:currentColor}
+.fade{animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.hud{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:36px}
+.hud div{background:var(--obsidian);padding:18px 20px}
+.hud span{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.hud b{font-family:var(--mono);font-weight:400;font-size:.98rem;color:var(--alabaster);font-variant-numeric:tabular-nums}
+@media(max-width:900px){.cap-grid{grid-template-columns:1fr}.hud{grid-template-columns:1fr}}
+
+/* Arc */
+.arc{background:var(--obsidian-2)}
+.stages{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;border-top:1px solid var(--line)}
+.stages button{text-align:left;padding:20px 16px 20px 0;border-top:2px solid transparent;margin-top:-1px;color:var(--faint);transition:color .3s,border-color .3s}
+.stages button b{display:block;font-family:var(--serif);font-weight:400;font-size:1.7rem;color:inherit}
+.stages button span{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
+.stages button[aria-selected="true"]{color:var(--alabaster);border-top-color:var(--gold)}
+.stages button:hover{color:var(--alabaster)}
+.arc-panel{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:26px}
+.arc-panel>div{background:var(--obsidian-2);padding:28px}
+.arc-panel h4{font-family:var(--mono);font-weight:400;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.arc-panel ul{list-style:none;display:grid;gap:10px;font-size:.95rem;color:var(--mute)}
+.arc-panel li b{color:var(--alabaster);font-weight:400}
+#wave{width:100%;height:110px;display:block}
+.cad{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.74rem;color:var(--mute);margin-top:12px;gap:10px;flex-wrap:wrap}
+.arc-sum{font-family:var(--serif);font-size:1.4rem;line-height:1.35;margin-top:30px;max-width:56ch;color:var(--alabaster)}
+@media(max-width:900px){.arc-panel{grid-template-columns:1fr}.stages{grid-template-columns:repeat(2,1fr)}}
+
+/* Architecture */
+.fly-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:60px;align-items:center}
+.fly svg{width:100%;height:auto;display:block}
+.fly text{font-family:var(--mono);font-size:10px;letter-spacing:.1em;fill:var(--faint);text-anchor:middle}
+.fly .ring{fill:none;stroke:var(--line);stroke-width:1}
+.fly .arc-a,.fly .arc-b{fill:none;stroke:rgba(245,244,240,.25);stroke-width:1.4;transition:stroke .5s}
+.fly .node{cursor:pointer}
+.fly .node circle{fill:var(--obsidian);stroke:rgba(245,244,240,.3);stroke-width:1.2;transition:stroke .4s,fill .4s}
+.fly .node text{fill:var(--mute);font-size:11px}
+.fly .node .big{font-family:var(--serif);font-size:26px;letter-spacing:0;fill:var(--alabaster)}
+[data-layer="1"] .n1 circle{stroke:var(--ice);fill:rgba(125,211,252,.08)}
+[data-layer="1"] .arc-a{stroke:var(--ice)}
+[data-layer="2"] .n2 circle{stroke:var(--gold);fill:rgba(198,168,124,.08)}
+[data-layer="2"] .arc-b{stroke:var(--gold)}
+.layers{display:grid;gap:14px}
+.layer{text-align:left;padding:24px 26px;width:100%;transition:border-color .4s,background .4s}
+.layer .mono{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.layer h3{margin:6px 0 4px;font-size:1.5rem}
+.layer p{color:var(--mute);font-size:.94rem}
+.layer dl{display:none;margin-top:16px;border-top:1px solid var(--line);padding-top:14px;grid-template-columns:auto 1fr;gap:6px 18px;font-family:var(--mono);font-size:.76rem}
+.layer dt{color:var(--faint)}
+.layer dd{color:var(--alabaster)}
+.layer[aria-pressed="true"] dl{display:grid;animation:fade .5s ease}
+.layer.l1[aria-pressed="true"]{border-color:rgba(125,211,252,.5)}
+.layer.l1[aria-pressed="true"] .mono{color:var(--ice)}
+.layer.l2[aria-pressed="true"]{border-color:rgba(198,168,124,.55)}
+.layer.l2[aria-pressed="true"] .mono{color:var(--gold)}
+.rail{margin-top:40px;padding:28px 30px;display:grid;grid-template-columns:auto 1fr;gap:10px 40px;align-items:baseline}
+.rail .mono{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.rail p{color:var(--mute);max-width:70ch}
+@media(max-width:900px){.fly-grid{grid-template-columns:1fr}.rail{grid-template-columns:1fr}}
+
+/* Vault */
+.vault{background:var(--obsidian-2)}
+.v-grid{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:70px;margin-top:60px;align-items:center}
+.seal{padding:34px;text-align:center}
+.seal svg{width:100%;max-width:280px;height:auto}
+.seal .spin{transform-origin:150px 150px;animation:spin 80s linear infinite}
+.seal .spin2{transform-origin:150px 150px;animation:spin 120s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.seal p{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--faint);margin-top:18px;text-transform:uppercase}
+.v-copy p{color:var(--mute);max-width:58ch;margin-bottom:18px}
+.unlock{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
+.unlock li{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);font-size:.96rem;color:var(--mute)}
+.unlock li span{font-family:var(--mono);font-size:.74rem;color:var(--gold);letter-spacing:.08em;padding-top:3px}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);margin-top:90px;position:relative}
+.phases::before{content:"";position:absolute;left:0;right:0;top:6px;height:1px;background:linear-gradient(90deg,var(--gold),var(--ice) 60%,rgba(125,211,252,.15))}
+.phase{padding:30px 26px 0 0;position:relative}
+.phase::before{content:"";position:absolute;top:1px;left:0;width:11px;height:11px;border-radius:50%;background:var(--obsidian-2);border:1px solid var(--gold)}
+.phase.now::before{background:var(--gold)}
+.phase .mono{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.phase h3{margin:8px 0;font-size:1.45rem}
+.phase p{color:var(--mute);font-size:.93rem;max-width:34ch}
+@media(max-width:900px){.v-grid{grid-template-columns:1fr;gap:40px}.phases{grid-template-columns:1fr;gap:26px}.phases::before{display:none}.phase{padding-left:26px;padding-top:0}.phase::before{top:8px}}
+
+/* Principles */
+.prin{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 60px;margin-top:56px}
+.prin div{padding:26px 0;border-top:1px solid var(--line)}
+.prin h3{font-size:1.4rem;margin-bottom:8px}
+.prin p{color:var(--mute);font-size:.95rem;max-width:48ch}
+.closing{text-align:left;margin-top:90px;padding-top:70px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:end}
+.closing h2{max-width:16ch}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(7,8,10,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.modal.open{display:flex;animation:fade .35s ease}
+.dialog{width:100%;max-width:520px;max-height:92vh;overflow:auto;background:#0E1014;border:1px solid var(--line);border-radius:22px;padding:38px;position:relative}
+.dialog h3{font-size:2rem;margin-bottom:8px}
+.dialog>p,.dialog form>p{color:var(--mute);font-size:.92rem;margin-bottom:24px}
+.x{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);font-size:1.1rem;line-height:1;color:var(--mute)}
+.x:hover{color:var(--alabaster);border-color:var(--gold)}
+.field{margin-bottom:16px}
+.field label{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+.field input,.field select{width:100%;padding:13px 14px;background:rgba(245,244,240,.04);border:1px solid var(--line);border-radius:10px;color:var(--alabaster);font:inherit;font-size:.95rem;font-weight:400}
+.field select option{background:#0E1014}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold)}
+.dialog .btn{width:100%;justify-content:center;margin-top:10px}
+.fine{font-size:.74rem!important;color:var(--faint)!important;margin:16px 0 0!important}
+.done{text-align:center;padding:20px 0 6px}
+.done svg{width:64px;height:64px;margin-bottom:20px}
+.done .tick{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-dasharray:120;stroke-dashoffset:120;animation:draw 1.2s ease forwards}
+.done p{color:var(--mute);margin:0 auto 12px;max-width:38ch}
+[hidden]{display:none!important}
+
+footer{border-top:1px solid var(--line);padding:34px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--faint)}
+@media(max-width:700px){section{padding:84px 0}.dialog{padding:28px 22px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.sig path,.done .tick{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Aethelon home">
+      <b>AETHELON</b>
+      <span class="badge"><i></i>aethelonlab.com</span>
+    </a>
+    <ul class="links">
+      <li><a href="#manifesto">Manifesto</a></li>
+      <li><a href="#capsule">The Capsule</a></li>
+      <li><a href="#arc">18-Year Arc</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#vault">Sovereign Vault</a></li>
+      <li><a href="#principles">Principles</a></li>
+    </ul>
+    <button class="btn btn-gold" data-brief>Request Private Briefing</button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <canvas id="sphere" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="eyebrow">Accumulative &amp; generative cognitive inference</span>
+    <h1>Nurturing Has Changed <em>Forever.</em></h1>
+    <p>An accumulative, multimodal inference architecture designed to accompany a human mind from its first spoken syllable to generational stewardship.</p>
+    <div class="cta">
+      <button class="btn btn-gold" data-brief>Request Private Briefing</button>
+      <a class="btn btn-ghost" href="#manifesto">Read the Founder's Letter</a>
+    </div>
+    <span class="note">CONCEPT STAGE · FIGURES ON THIS SITE ARE DESIGN TARGETS</span>
+  </div>
+</section>
+
+<section class="manifesto" id="manifesto">
+  <div class="wrap m-grid">
+    <aside class="founder">
+      <svg class="sig" viewBox="0 0 280 110" role="img" aria-label="Neural signature">
+        <path d="M8 70 C30 20 48 96 70 52 S104 18 122 60 150 98 168 44 196 30 214 62 244 84 272 36"/>
+        <path d="M70 52 L96 86 M122 60 L140 24 M168 44 L190 88 M214 62 L236 22" style="animation-delay:1.2s"/>
+        <circle cx="70" cy="52" r="3"/><circle cx="122" cy="60" r="3"/><circle cx="168" cy="44" r="3"/><circle cx="214" cy="62" r="3"/>
+      </svg>
+      <h3>Dr. Elias Kairos Chen</h3>
+      <div class="role">Founder &amp; Chief Architect, Aethelon</div>
+      <p>PhD in artificial intelligence (neuromorphic computing). Adviser to family offices on long-horizon AI strategy.</p>
+      <a href="https://dreliaskairos-chen.com" target="_blank" rel="noopener">dreliaskairos-chen.com ↗</a>
+    </aside>
+    <article class="letter">
+      <span class="eyebrow">A letter from the founder</span>
+      <h2>The End of Industrial Nurturing</h2>
+      <p>For over two centuries, we have educated children on an industrial assembly line—standardized curriculums, fixed classrooms, and static assessments designed for an era that no longer exists. Even as intelligence becomes as abundant and accessible as electricity, the way we nurture human potential has remained frozen in time.</p>
+      <p>We are standing at a permanent inflection point. When compute becomes a continuous utility, a child’s learning environment no longer needs to be passive or generic. It can be alive, attentive, and deeply personal.</p>
+      <p>I founded Aethelon with a singular conviction: every child deserves a continuous, multimodal intelligence that grows alongside them from their very first word to the threshold of adulthood. We are not building another chatbot or a screen-time distraction. We are engineering an accumulative cognitive architecture—a system that listens to a toddler’s curiosity, adapts to a teenager’s reasoning, and remembers how a unique mind unfolds over eighteen years.</p>
+      <p>For founding families, we extend this further into a Sovereign Vault, ensuring that a family's hard-won wisdom, ethics, and generational mandate are never lost to time.</p>
+      <p>By beginning with visionary families who demand uncompromising privacy and depth, we are building the foundational intelligence that will one day empower institutions and elevate human nurturing everywhere.</p>
+      <p class="close">The future of how we raise, guide, and awaken human potential has changed forever. We invite you to build it with us.</p>
+    </article>
+  </div>
+</section>
+
+<section id="capsule">
+  <div class="wrap" id="capRoot" data-state="edge">
+    <span class="eyebrow">The embodied capsule</span>
+    <h2>The Nurturing Environment</h2>
+    <p class="lede">A dedicated room at home where a spatial display and an embodied companion share one mind. Compute arrives like electricity: always present, drawn as needed. Aethelon's work is the cognitive stack. The body it runs in comes from humanoid and spatial hardware partners.</p>
+
+    <div class="cap-grid">
+      <div class="glass schem">
+        <svg viewBox="0 0 640 400" role="img" aria-label="Schematic of a home room with a spatial display, a companion robot, a local edge core and a link to cloud compute">
+          <rect class="frame" x="24" y="70" width="430" height="290" rx="6"/>
+          <line class="frame" x1="24" y1="300" x2="454" y2="300"/>
+          <text x="34" y="62">HOME ROOM · PRIVATE BOUNDARY</text>
+          <g class="edge">
+            <rect class="e-s e-f" x="54" y="104" width="150" height="150" rx="4"/>
+            <path class="e-s" d="M72 214 Q100 150 128 190 T186 150"/>
+            <text x="54" y="96">SPATIAL DISPLAY</text>
+            <circle class="e-s e-f" cx="330" cy="176" r="20"/>
+            <circle class="e-s" cx="323" cy="173" r="2.4"/><circle class="e-s" cx="337" cy="173" r="2.4"/>
+            <rect class="e-s e-f" x="306" y="202" width="48" height="66" rx="16"/>
+            <path class="e-s" d="M306 222 L290 252 M354 222 L370 252 M320 268 V298 M340 268 V298"/>
+            <text x="296" y="142">COMPANION</text>
+            <circle class="e-s" cx="256" cy="232" r="11"/>
+            <path class="e-s" d="M240 298 V266 Q256 244 272 266 V298"/>
+            <text x="234" y="322">LEARNER</text>
+            <path class="e-s flow" d="M268 228 L306 190 M244 226 L204 196"/>
+            <rect class="e-s e-f" x="388" y="250" width="48" height="48" rx="5"/>
+            <path class="e-s" d="M398 266 H426 M398 274 H426 M398 282 H426"/>
+            <text x="376" y="322">EDGE CORE</text>
+            <path class="e-s flow" d="M354 240 L388 268"/>
+          </g>
+          <g class="cloud">
+            <path class="c-s flow" d="M436 274 H500 V200"/>
+            <circle class="c-s" cx="500" cy="238" r="7"/>
+            <text x="512" y="242">METER</text>
+            <rect class="c-s" x="486" y="70" width="130" height="118" rx="6"/>
+            <g>
+              <circle class="c-d" cx="511" cy="95" r="2.5"/><circle class="c-d" cx="541" cy="95" r="2.5"/><circle class="c-d" cx="571" cy="95" r="2.5"/><circle class="c-d" cx="596" cy="95" r="2.5"/>
+              <circle class="c-d" cx="511" cy="121" r="2.5"/><circle class="c-d" cx="541" cy="121" r="2.5"/><circle class="c-d" cx="571" cy="121" r="2.5"/><circle class="c-d" cx="596" cy="121" r="2.5"/>
+              <circle class="c-d" cx="511" cy="147" r="2.5"/><circle class="c-d" cx="541" cy="147" r="2.5"/><circle class="c-d" cx="571" cy="147" r="2.5"/><circle class="c-d" cx="596" cy="147" r="2.5"/>
+              <circle class="c-d" cx="511" cy="171" r="2.5"/><circle class="c-d" cx="541" cy="171" r="2.5"/><circle class="c-d" cx="571" cy="171" r="2.5"/><circle class="c-d" cx="596" cy="171" r="2.5"/>
+            </g>
+            <text x="486" y="62">UTILITY CLOUD GRID</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="cap-side">
+        <div class="toggle" role="group" aria-label="Compute state">
+          <button id="tEdge" aria-pressed="true" data-set="edge">Edge Reflex Core</button>
+          <button id="tCloud" aria-pressed="false" data-set="cloud">Utility Cloud Grid</button>
+        </div>
+        <div class="glass state" id="statePanel" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="hud" aria-label="Design targets">
+      <div><span>Voice round trip</span><b>&lt; 300 ms target</b></div>
+      <div><span>Edge vision</span><b>60 fps, on device</b></div>
+      <div><span>Vault encryption</span><b>Family-held keys</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="arc" id="arc">
+  <div class="wrap">
+    <span class="eyebrow">The 18-year cognitive arc</span>
+    <h2>One mind, followed from first word to adulthood</h2>
+    <p class="lede">The same system changes its role as the learner grows: listener, tutor, coach, then research partner. Select a stage to see how it behaves.</p>
+
+    <div class="stages" role="tablist" aria-label="Age stage" id="stages"></div>
+    <div class="arc-panel" id="arcPanel" role="tabpanel" aria-live="polite">
+      <div>
+        <h4>Voice cadence · simulated</h4>
+        <canvas id="wave" aria-hidden="true"></canvas>
+        <div class="cad"><span id="cadHz"></span><span id="cadTurn"></span></div>
+      </div>
+      <div><h4>Active inference engines</h4><ul id="engines"></ul></div>
+      <div><h4>Developmental milestones</h4><ul id="miles"></ul></div>
+    </div>
+    <p class="arc-sum" id="arcSum"></p>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="wrap" id="flyRoot" data-layer="1">
+    <span class="eyebrow">The dual-layer inference stack</span>
+    <h2>Memory that accumulates. Teaching that is generated.</h2>
+    <p class="lede">Two layers feed each other. What the learner does becomes memory, and memory shapes what the system generates next. Each turn of the wheel makes the next one more personal.</p>
+
+    <div class="fly-grid">
+      <div class="glass fly" style="padding:22px">
+        <svg viewBox="0 0 440 340" role="img" aria-label="Flywheel connecting the Cognitive Ledger and the Neuro-Synth Engine">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="rgba(245,244,240,.55)"/></marker>
+          </defs>
+          <circle class="ring" cx="220" cy="170" r="128"/>
+          <path class="arc-a flow" d="M128 96 A128 128 0 0 1 312 96" marker-end="url(#ah)"/>
+          <path class="arc-b flow" d="M312 244 A128 128 0 0 1 128 244" marker-end="url(#ah)"/>
+          <text x="220" y="34">CONTEXT · WHAT THIS MIND KNOWS</text>
+          <text x="220" y="316">EVIDENCE · WHAT JUST HAPPENED</text>
+          <text x="220" y="166">FLYWHEEL</text>
+          <text x="220" y="182">EVERY SESSION</text>
+          <g class="node n1" data-pick="1" tabindex="0" role="button" aria-label="Layer one, the Accumulative Cognitive Ledger">
+            <circle cx="92" cy="170" r="58"/><text class="big" x="92" y="168">I</text><text x="92" y="190">LEDGER</text>
+          </g>
+          <g class="node n2" data-pick="2" tabindex="0" role="button" aria-label="Layer two, the Generative Neuro-Synth Engine">
+            <circle cx="348" cy="170" r="58"/><text class="big" x="348" y="168">II</text><text x="348" y="190">ENGINE</text>
+          </g>
+        </svg>
+      </div>
+      <div class="layers">
+        <button class="glass layer l1" data-pick="1" aria-pressed="true">
+          <span class="mono">Layer I</span>
+          <h3>The Accumulative Cognitive Ledger</h3>
+          <p>A longitudinal memory graph of how one mind learns, fed by edge telemetry from the room.</p>
+          <dl>
+            <dt>Holds</dt><dd>Concepts mastered, misconceptions, interests, pace</dd>
+            <dt>Source</dt><dd>On-device signals, filtered before upload</dd>
+            <dt>Span</dt><dd>Continuous, year 1 to year 18</dd>
+            <dt>Flow</dt><dd>Supplies context to Layer II</dd>
+          </dl>
+        </button>
+        <button class="glass layer l2" data-pick="2" aria-pressed="false">
+          <span class="mono">Layer II</span>
+          <h3>The Generative Neuro-Synth Engine</h3>
+          <p>Real-time voice and generated worlds, composed for this learner at this moment.</p>
+          <dl>
+            <dt>Voice</dt><dd>&lt; 300 ms round trip, full duplex (target)</dd>
+            <dt>Worlds</dt><dd>3D lessons generated on demand</dd>
+            <dt>Modes</dt><dd>Coach, tutor, explain, reason alongside</dd>
+            <dt>Flow</dt><dd>Returns evidence to Layer I</dd>
+          </dl>
+        </button>
+      </div>
+    </div>
+
+    <div class="glass rail">
+      <span class="mono">The Values Rail</span>
+      <p>Aethelon is secular and neutral by default. Above both layers sits a guardrail that each family or institution sets for itself: the principles, traditions and boundaries the system should honour when it teaches. The stack adapts to your values. It does not supply its own.</p>
+    </div>
+  </div>
+</section>
+
+<section class="vault" id="vault">
+  <div class="wrap">
+    <span class="eyebrow">The Sovereign Family Vault</span>
+    <h2>What a family knows, kept for those who come next</h2>
+
+    <div class="v-grid">
+      <div class="glass seal">
+        <svg viewBox="0 0 300 300" role="img" aria-label="Geometric cryptographic seal">
+          <g class="spin" fill="none" stroke="#C6A87C" stroke-width=".8">
+            <circle cx="150" cy="150" r="138" stroke-dasharray="2 7"/>
+            <polygon points="150,22 261,86 261,214 150,278 39,214 39,86"/>
+          </g>
+          <g class="spin2" fill="none" stroke="rgba(125,211,252,.6)" stroke-width=".8">
+            <polygon points="150,48 238,201 62,201"/>
+            <polygon points="150,252 62,99 238,99"/>
+            <circle cx="150" cy="150" r="102" stroke-dasharray="1 5"/>
+          </g>
+          <circle cx="150" cy="150" r="44" fill="#07080A" stroke="#C6A87C" stroke-width="1"/>
+          <path d="M150 132 a9 9 0 1 1 0 18 a9 9 0 1 1 0 -18 M150 150 v20 M150 160 h7 M150 167 h5" fill="none" stroke="#F5F4F0" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <p>Keys held by the family · never by Aethelon</p>
+      </div>
+      <div class="v-copy">
+        <p>Founding families place memoirs, family constitutions and wealth mandates in a vault encrypted with customer-managed keys. The family holds those keys. Aethelon is designed so that it cannot read what the vault contains.</p>
+        <p>Contents are released to the next generation when they are ready to receive them, tied to milestones the family defines.</p>
+        <ul class="unlock">
+          <li><span>EARLY YEARS</span>Family stories and voices, told at a child's level</li>
+          <li><span>ADOLESCENCE</span>The family constitution and the reasoning behind it</li>
+          <li><span>THRESHOLD</span>Memoirs in full, and letters written for this moment</li>
+          <li><span>STEWARDSHIP</span>Wealth mandates and the duties that come with them</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phases" aria-label="Scale horizon">
+      <div class="phase now"><span class="mono">Phase I · Now forming</span><h3>Founding Families</h3><p>A small circle of families and family offices who shape the system with us.</p></div>
+      <div class="phase"><span class="mono">Phase II</span><h3>Sovereign &amp; Private Academies</h3><p>Institutions that run the stack under their own values and governance.</p></div>
+      <div class="phase"><span class="mono">Phase III</span><h3>Universal Human Potential</h3><p>The same depth of nurturing, made available to every learner.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="wrap">
+    <span class="eyebrow">Design principles</span>
+    <h2>The commitments we are building to</h2>
+    <p class="lede">A system that stays beside a child for eighteen years has to be trusted before it is impressive. These are the rules the architecture is designed around.</p>
+    <div class="prin">
+      <div><h3>Parents and educators lead</h3><p>Aethelon works with the adults in a child's life. They see what it teaches, set its limits, and can pause it at any time.</p></div>
+      <div><h3>The room keeps its secrets</h3><p>Raw audio and video are processed on the device inside the home and are not sent to the cloud.</p></div>
+      <div><h3>The family holds the keys</h3><p>The ledger and the vault are encrypted with keys the family controls, and the family can delete either one.</p></div>
+      <div><h3>Voice and presence before screens</h3><p>In the earliest years the companion listens and speaks. Display time is introduced gradually and stays under parental control.</p></div>
+      <div><h3>Neutral by default</h3><p>The system carries no ideology of its own. Values come from the family or institution through the Values Rail.</p></div>
+      <div><h3>The record belongs to the learner</h3><p>At adulthood, ownership of the cognitive ledger passes to the person it describes.</p></div>
+    </div>
+
+    <div class="closing">
+      <h2>We invite you to build it with us.</h2>
+      <div>
+        <p class="lede" style="margin:0 0 22px">For family offices, co-development partners and investors.</p>
+        <button class="btn btn-gold" data-brief>Request Private Briefing</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Aethelon</span><span>aethelonlab.com</span><span>Private Briefing Only</span></div></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="dialog">
+    <button class="x" id="mClose" aria-label="Close">×</button>
+    <form id="briefForm">
+      <h3 id="mTitle">Request a Private Briefing</h3>
+      <p>Briefings are held one to one with the founder.</p>
+      <div class="field"><label for="fName">Full name</label><input id="fName" name="name" required autocomplete="name"></div>
+      <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" required autocomplete="email"></div>
+      <div class="field"><label for="fAff">Affiliation</label>
+        <select id="fAff" name="affiliation" required><option value="">Select</option><option>Family Office</option><option>Founding Family</option><option>Institution</option></select></div>
+      <div class="field"><label for="fRegion">Region</label><input id="fRegion" name="region" required placeholder="e.g. Singapore"></div>
+      <div class="field"><label for="fInt">Primary interest</label>
+        <select id="fInt" name="interest" required><option value="">Select</option><option>Home Nurturing Capsule</option><option>Sovereign Legacy Vault</option><option>Strategic Co-Development</option></select></div>
+      <button class="btn btn-gold" type="submit" id="fSend">Submit Request</button>
+      <p class="fine">Your details are used only to arrange this briefing and are not shared.</p>
+      <p class="fine" id="fErr" hidden style="color:#f0b4a4!important"></p>
+    </form>
+    <div class="done" id="done" hidden>
+      <svg viewBox="0 0 64 64"><circle class="tick" cx="32" cy="32" r="19"/><path class="tick" d="M23 33 l6 6 l12 -13" style="animation-delay:.5s"/></svg>
+      <h3 id="doneTitle">Thank you.</h3>
+      <p id="doneMsg">Your request has been received. The founder will reply personally to arrange a time.</p>
+      <p class="note" id="doneNote" hidden>PREVIEW · THIS FORM IS NOT YET CONNECTED TO AN INBOX</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Set one of these before launch. endpoint: a form service URL that accepts a JSON POST. email: fallback address. */
+var CONFIG = { endpoint: '', email: '' };
+var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function $(s, r){ return (r || document).querySelector(s); }
+function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+
+/* ---------- Hero sphere ---------- */
+(function(){
+  var c = $('#sphere'), x = c.getContext('2d'), W, H, D, N = 620, pts = [], links = [];
+  var mx = 0, my = 0, tx = 0, ty = 0, visible = true;
+  for (var i = 0; i < N; i++){
+    var y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), a = i * 2.399963;
+    pts.push({ x: Math.cos(a) * r, y: y, z: Math.sin(a) * r });
+  }
+  for (i = 0; i < N; i++){
+    var best = [];
+    for (var j = 0; j < N; j++){ if (j === i) continue;
+      var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, dz = pts[i].z - pts[j].z;
+      best.push([dx*dx + dy*dy + dz*dz, j]);
+    }
+    best.sort(function(p, q){ return p[0] - q[0]; });
+    for (var k = 0; k < 2; k++) if (best[k][1] > i || k === 1) links.push([i, best[k][1]]);
+  }
+  function size(){
+    D = Math.min(window.devicePixelRatio || 1, 2);
+    W = c.clientWidth; H = c.clientHeight;
+    c.width = W * D; c.height = H * D; x.setTransform(D, 0, 0, D, 0, 0);
+  }
+  function frame(t){
+    if (!visible && !REDUCED) { requestAnimationFrame(frame); return; }
+    t = t / 1000;
+    tx += (mx - tx) * 0.04; ty += (my - ty) * 0.04;
+    x.clearRect(0, 0, W, H);
+    var wide = W > 900;
+    var cx = wide ? W * 0.72 : W * 0.5, cy = wide ? H * 0.52 : H * 0.42;
+    var R = Math.min(W, H) * (wide ? 0.36 : 0.4) * (1 + 0.025 * Math.sin(t * 0.8));
+    var ry = t * 0.11 + tx * 0.5, rx = 0.25 + ty * 0.35;
+    var cyR = Math.cos(ry), syR = Math.sin(ry), cxR = Math.cos(rx), sxR = Math.sin(rx);
+    var P = new Array(N);
+    for (var i = 0; i < N; i++){
+      var p = pts[i];
+      var rip = 1 + 0.045 * Math.sin(p.y * 7 - t * 1.5) * (0.6 + 0.4 * Math.sin(t * 0.5 + p.x * 3));
+      var X = p.x * rip, Y = p.y * rip, Z = p.z * rip;
+      var x1 = X * cyR - Z * syR, z1 = X * syR + Z * cyR;
+      var y1 = Y * cxR - z1 * sxR, z2 = Y * sxR + z1 * cxR;
+      var s = 2.6 / (2.6 + z2);
+      P[i] = [cx + x1 * R * s, cy + y1 * R * s, z2];
+    }
+    x.lineWidth = 0.6;
+    for (i = 0; i < links.length; i++){
+      var a = P[links[i][0]], b = P[links[i][1]], depth = (2 - a[2] - b[2]) / 4;
+      x.strokeStyle = 'rgba(125,211,252,' + (0.04 + depth * 0.2).toFixed(3) + ')';
+      x.beginPath(); x.moveTo(a[0], a[1]); x.lineTo(b[0], b[1]); x.stroke();
+    }
+    for (i = 0; i < N; i++){
+      var q = P[i], d = (1 - q[2]) / 2;
+      x.fillStyle = (i % 9 === 0 ? 'rgba(198,168,124,' : 'rgba(245,244,240,') + (0.12 + d * 0.7).toFixed(3) + ')';
+      x.beginPath(); x.arc(q[0], q[1], 0.5 + d * 1.2, 0, 6.2832); x.fill();
+    }
+    if (!REDUCED) requestAnimationFrame(frame);
+  }
+  window.addEventListener('resize', function(){ size(); if (REDUCED) frame(0); });
+  window.addEventListener('pointermove', function(e){ mx = e.clientX / window.innerWidth - 0.5; my = e.clientY / window.innerHeight - 0.5; });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }).observe(c);
+  size(); requestAnimationFrame(frame);
+})();
+
+/* ---------- Capsule toggle ---------- */
+(function(){
+  var data = {
+    edge: { tag: 'State A · under 15 ms, local', title: 'Edge Reflex Core', items: [
+      'Balance and movement of the companion, computed in the room',
+      'Gaze and attention cues read at 60 fps, on device',
+      'Full-duplex voice, so a child can interrupt naturally',
+      'Zero-trust privacy filter: raw audio and video stay home' ] },
+    cloud: { tag: 'State B · on-demand inference', title: 'Utility Cloud Grid', items: [
+      'High-power reasoning for hard questions and long projects',
+      '3D lessons and worlds synthesised in real time',
+      'Longitudinal memory graph updated after each session',
+      'Capacity scales with need, metered like a utility' ] }
+  };
+  var root = $('#capRoot'), panel = $('#statePanel');
+  function set(k){
+    root.setAttribute('data-state', k);
+    $('#tEdge').setAttribute('aria-pressed', k === 'edge'); $('#tCloud').setAttribute('aria-pressed', k === 'cloud');
+    var d = data[k];
+    panel.innerHTML = '<div class="fade"><span class="mono">' + d.tag + '</span><h3>' + d.title + '</h3><ul>' +
+      d.items.map(function(i){ return '<li>' + i + '</li>'; }).join('') + '</ul></div>';
+  }
+  $$('[data-set]').forEach(function(b){ b.addEventListener('click', function(){ set(b.getAttribute('data-set')); }); });
+  set('edge');
+})();
+
+/* ---------- 18-year arc ---------- */
+(function(){
+  var S = [
+    { age: 'Ages 1–4', name: 'First words', hz: '300–400 Hz', turn: 'Short turns, long pauses', f: 3.2, amp: 0.8, gap: 0.55,
+      eng: [['Prosody listener', 'hears sounds becoming words'], ['Play-pattern mapper', 'notes what holds attention'], ['Caregiver digest', 'weekly notes for parents']],
+      mil: ['First words to full sentences', 'Naming the world', 'Turn-taking in conversation'],
+      sum: 'Led by voice and the companion, with little display time. The system mostly listens.' },
+    { age: 'Ages 5–9', name: 'Curious builder', hz: '250–300 Hz', turn: 'Rapid questions', f: 2.5, amp: 0.7, gap: 0.3,
+      eng: [['Reading and number tutor', 'paced to the child'], ['World generator', 'lessons as explorable scenes'], ['Question tracer', 'follows each "why" to its root']],
+      mil: ['Fluent reading', 'Number sense', 'First projects that last weeks'],
+      sum: 'A patient tutor. Every question is followed, and lessons are built around what this child is curious about.' },
+    { age: 'Ages 10–14', name: 'Reasoner', hz: '200–260 Hz', turn: 'Longer arguments', f: 1.8, amp: 0.6, gap: 0.18,
+      eng: [['Socratic coach', 'asks before it tells'], ['Domain depth tutor', 'goes as far as the learner can'], ['Misconception ledger', 'returns to what was shaky']],
+      mil: ['Abstract reasoning', 'Arguing from evidence', 'Self-directed study'],
+      sum: 'A coach that withholds the answer. It knows which ideas were fragile years ago and returns to them.' },
+    { age: 'Ages 15–18+', name: 'Steward', hz: '110–220 Hz', turn: 'Sustained dialogue', f: 1.2, amp: 0.5, gap: 0.08,
+      eng: [['Research partner', 'works alongside on real problems'], ['Mandate briefings', 'opens the Sovereign Vault by milestone'], ['Transition planner', 'prepares the handover']],
+      mil: ['Independent research', 'Judgement under uncertainty', 'Ownership of their own ledger'],
+      sum: 'A partner in real work. Family knowledge is released as the learner is ready, and the record becomes theirs.' }
+  ];
+  var cur = 0, tabs = $('#stages'), cv = $('#wave'), g = cv.getContext('2d');
+  S.forEach(function(s, i){
+    var b = document.createElement('button');
+    b.setAttribute('role', 'tab'); b.innerHTML = '<span>' + s.age + '</span><b>' + s.name + '</b>';
+    b.addEventListener('click', function(){ pick(i); }); tabs.appendChild(b);
+  });
+  function pick(i){
+    cur = i; var s = S[i];
+    $$('button', tabs).forEach(function(b, j){ b.setAttribute('aria-selected', j === i); });
+    $('#engines').innerHTML = s.eng.map(function(e){ return '<li><b>' + e[0] + '</b>, ' + e[1] + '</li>'; }).join('');
+    $('#miles').innerHTML = s.mil.map(function(m){ return '<li>' + m + '</li>'; }).join('');
+    $('#cadHz').textContent = 'Pitch ' + s.hz; $('#cadTurn').textContent = s.turn;
+    $('#arcSum').textContent = s.sum;
+    ['#engines', '#miles', '#arcSum'].forEach(function(q){ var el = $(q); el.classList.remove('fade'); void el.offsetWidth; el.classList.add('fade'); });
+    if (REDUCED) draw(0);
+  }
+  var f = S[0].f, amp = S[0].amp, gap = S[0].gap;
+  function draw(t){
+    var s = S[cur], D = Math.min(window.devicePixelRatio || 1, 2), W = cv.clientWidth, H = cv.clientHeight;
+    if (cv.width !== W * D){ cv.width = W * D; cv.height = H * D; }
+    g.setTransform(D, 0, 0, D, 0, 0); g.clearRect(0, 0, W, H);
+    f += (s.f - f) * 0.05; amp += (s.amp - amp) * 0.05; gap += (s.gap - gap) * 0.05;
+    t = t / 1000;
+    var n = Math.floor(W / 6);
+    for (var i = 0; i < n; i++){
+      var u = i / n;
+      var env = Math.max(0, Math.sin(u * 6.2832 * f * 0.9 - t * 1.4) - gap) / (1 - gap);
+      var v = env * amp * (0.55 + 0.45 * Math.sin(u * 60 * f + t * 5)) ;
+      var h = Math.max(2, Math.abs(v) * H * 0.9);
+      g.fillStyle = i % 5 === 0 ? 'rgba(198,168,124,.9)' : 'rgba(125,211,252,.55)';
+      g.fillRect(i * 6, (H - h) / 2, 2, h);
+    }
+    if (!REDUCED) requestAnimationFrame(draw);
+  }
+  pick(0); requestAnimationFrame(draw);
+})();
+
+/* ---------- Flywheel ---------- */
+(function(){
+  var root = $('#flyRoot');
+  function pick(n){
+    root.setAttribute('data-layer', n);
+    $$('.layer', root).forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-pick') === n); });
+  }
+  $$('[data-pick]', root).forEach(function(el){
+    el.addEventListener('click', function(){ pick(el.getAttribute('data-pick')); });
+    el.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(el.getAttribute('data-pick')); } });
+  });
+})();
+
+/* ---------- Briefing modal ---------- */
+(function(){
+  var m = $('#modal'), form = $('#briefForm'), done = $('#done'), err = $('#fErr'), last;
+  function open(){ last = document.activeElement; form.hidden = false; done.hidden = true; err.hidden = true; m.classList.add('open'); document.body.style.overflow = 'hidden'; $('#fName').focus(); }
+  function close(){ m.classList.remove('open'); document.body.style.overflow = ''; if (last) last.focus(); }
+  function finish(name, msg, preview){
+    $('#doneTitle').textContent = 'Thank you, ' + name.split(' ')[0] + '.';
+    if (msg) $('#doneMsg').textContent = msg;
+    $('#doneNote').hidden = !preview;
+    form.hidden = true; done.hidden = false; form.reset();
+  }
+  $$('[data-brief]').forEach(function(b){ b.addEventListener('click', open); });
+  $('#mClose').addEventListener('click', close);
+  m.addEventListener('click', function(e){ if (e.target === m) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && m.classList.contains('open')) close(); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var d = {}; $$('input,select', form).forEach(function(el){ d[el.name] = el.value.trim(); });
+    if (CONFIG.endpoint){
+      var btn = $('#fSend'); btn.disabled = true; btn.textContent = 'Sending';
+      fetch(CONFIG.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(d) })
+        .then(function(r){ if (!r.ok) throw new Error(); finish(d.name); })
+        .catch(function(){ err.hidden = false; err.textContent = 'Your request could not be sent. Please try again' + (CONFIG.email ? ' or write to ' + CONFIG.email : '') + '.'; })
+        .then(function(){ btn.disabled = false; btn.textContent = 'Submit Request'; });
+    } else if (CONFIG.email){
+      var body = 'Name: ' + d.name + '\nEmail: ' + d.email + '\nAffiliation: ' + d.affiliation + '\nRegion: ' + d.region + '\nPrimary interest: ' + d.interest;
+      window.location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Private briefing request') + '&body=' + encodeURIComponent(body);
+      finish(d.name, 'Your email app should now show a drafted request. Send it to complete. If nothing opened, write to ' + CONFIG.email + '.');
+    } else {
+      finish(d.name, null, true);
+    }
+  });
+})();
+</script>
+</body>
+</html>
