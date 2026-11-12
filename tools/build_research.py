@@ -5,6 +5,7 @@ Run from the repository root:  python3 tools/build_research.py
 import html, math, os, random
 
 SITE = "https://aethelonlab.com"
+MARK = '''<svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="45" fill="none" stroke="#C6A87C" stroke-width="1.6"/><path d="M23.568 70.0Q23.312 70.0 23.312 69.616Q23.312 69.232 23.568 69.232Q25.744 69.232 28.112000000000002 67.312Q30.48 65.392 33.104 61.552L52.24 33.263999999999996Q53.456 31.6 52.784000000000006 31.184Q52.112 30.768 48.144000000000005 30.768Q47.952 30.768 47.952 30.384Q47.952 30.0 48.144000000000005 30.0H74.0Q74.64 30.0 74.64 30.576L74.768 38.64Q74.768 38.832 74.416 38.864000000000004Q74.06400000000001 38.896 74.0 38.704Q73.872 36.912 72.848 35.248Q71.824 33.583999999999996 70.16 32.56Q68.49600000000001 31.536 66.44800000000001 31.536H63.184Q61.391999999999996 31.536 60.368 31.824Q59.34400000000001 32.112 58.928000000000004 32.944Q58.512 33.775999999999996 58.512 35.248V64.56Q58.512 66.096 58.896 66.96000000000001Q59.28 67.824 60.208 68.176Q61.135999999999996 68.528 62.864000000000004 68.528H67.024Q69.072 68.528 70.896 67.44Q72.72 66.352 74.096 64.49600000000001Q75.47200000000001 62.64 75.98400000000001 60.272Q75.98400000000001 60.08 76.33600000000001 60.144Q76.688 60.208 76.688 60.4Q76.49600000000001 62.128 76.304 64.56Q76.11200000000001 66.992 76.11200000000001 69.04Q76.11200000000001 70.0 75.152 70.0H48.464Q48.336 70.0 48.336 69.616Q48.336 69.232 48.464 69.232Q50.64 69.232 51.760000000000005 68.912Q52.88 68.592 53.264 67.632Q53.648 66.672 53.648 64.816V32.368L55.44 31.344L35.152 61.68Q32.72 65.392 33.519999999999996 67.312Q34.32 69.232 38.224000000000004 69.232Q38.544000000000004 69.232 38.544000000000004 69.616Q38.544000000000004 70.0 38.224000000000004 70.0Q36.176 70.0 34.448 69.872Q32.72 69.744 30.032000000000004 69.744Q27.92 69.744 26.608000000000004 69.872Q25.296000000000003 70.0 23.568 70.0ZM42.128 49.903999999999996 43.088 48.432H56.976L57.42400000000001 49.903999999999996ZM71.568 55.28Q71.568 52.528 70.0 51.215999999999994Q68.432 49.903999999999996 65.04 49.903999999999996H55.44V48.432H65.168Q68.49600000000001 48.432 69.968 47.312Q71.44 46.192 71.44 43.824Q71.44 43.696 71.824 43.696Q72.208 43.696 72.208 43.824Q72.208 45.808 72.176 46.896Q72.144 47.983999999999995 72.144 49.2Q72.144 50.672 72.208 52.144Q72.272 53.616 72.272 55.28Q72.272 55.408 71.92 55.408Q71.568 55.408 71.568 55.28Z" fill="#F5F4F0"/></svg>'''
 PILLARS = {
     1: ("I", "Current Limits", "Why today's AI, for all its brilliance, does not yet know how to raise a child."),
     2: ("II", "Post-Abundance Horizon", "What learning becomes when knowledge is everywhere and attention is the scarce thing."),
@@ -204,7 +205,10 @@ HEAD = """<!DOCTYPE html>
 <meta property="og:type" content="{ogtype}">
 <meta property="og:url" content="{url}">
 <link rel="canonical" href="{url}">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080A'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23C6A87C' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%237DD3FC'/%3E%3C/svg%3E">
+<link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
+<meta property="og:image" content="https://aethelonlab.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -215,7 +219,7 @@ HEAD = """<!DOCTYPE html>
 
 def nav(root, back_href, back_label):
     return f"""<header class="nav"><div class="nav-in">
-  <a class="brand" href="{root}index.html" aria-label="Aethelon home"><b>AETHELON</b></a>
+  <a class="brand" href="{root}index.html" aria-label="Aethelon home">{MARK}<b>AETHELON</b></a>
   <div class="nav-r"><a class="back" href="{back_href}">← {back_label}</a><a class="btn" href="{root}index.html#briefing">Request Private Briefing</a></div>
 </div></header>
 """
